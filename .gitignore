@@ -1,0 +1,11 @@
+# Logs
+logs
+*.log
+
+node_modules
+
+package-lock.json
+
+scratchings.js
+
+.env

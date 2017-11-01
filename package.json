@@ -1,0 +1,52 @@
+{
+  "name": "jest-enlightener",
+  "version": "0.1.0",
+  "description": "A util to convert mounted tests to shallow render where possible",
+  "main": "./src/index.js",
+  "bin": "./src/index.js",
+  "author": "Ben Conolly",
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-traverse": "^6.26.0",
+    "classnames": "^2.2.4",
+    "jest-cli": "^21.2.1",
+    "jest-haste-map": "^21.2.0",
+    "p-limit": "^1.1.0",
+    "prop-types": "^15.5.8",
+    "react-input-autosize": "^2.0.1",
+    "recast": "^0.12.8"
+  },
+  "devDependencies": {
+    "eslint": "^4.3.0",
+    "eslint-config-keystone": "^3.0.0",
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-plugin-flowtype": "^2.35.0",
+    "flow-bin": "^0.51.1",
+    "husky": "^0.14.3",
+    "jest": "^20.0.4",
+    "lint-staged": "^4.0.2",
+    "prettier": "^1.5.3"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "precommit": "lint-staged",
+    "start": "node index.js",
+    "test": "echo WE NEED TESTS",
+    "prettier": "prettier --single-quote --trailing-comma es5 --use-tabs --write"
+  },
+  "files": [
+    "src",
+    "CHANGELOG.md",
+    "README.md"
+  ],
+  "keywords": [],
+  "lint-staged": {
+    "*.js": [
+      "yarn prettier",
+      "yarn lint",
+      "git add"
+    ]
+  }
+}

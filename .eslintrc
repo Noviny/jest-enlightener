@@ -1,0 +1,7 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["keystone", "prettier"],
+  "plugins": [
+    "flowtype"
+  ]
+}
