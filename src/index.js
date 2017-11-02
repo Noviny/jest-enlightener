@@ -27,8 +27,11 @@ const enlighten = async () => {
 
 	// TODO: Run tests to make sure they are passing beforehand, so we don't get false negatives
 
-	// TODO: transform files should add shallow dep if needed
+	// TODO: transform files should add 'shallow' dep if needed
 	const testFileData = await transformFiles(filePaths);
+
+	if (testFileData.totalUpdatedTests < 1)
+		return `We could not update any tests!`;
 
 	// TODO stop this having these random side effects
 	addIgnoredFilesToConfig(testFileData, config);
