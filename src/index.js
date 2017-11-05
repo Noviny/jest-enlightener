@@ -1,8 +1,21 @@
 #! /usr/bin/env node
-const argv = require('yargs').option('config', {
-	alias: 'c',
-	default: false,
-}).argv;
+const argv = require('yargs')
+	.option('config', {
+		alias: 'c',
+		default: false,
+	})
+	.option('testCommand', {
+		alias: 'tc',
+		default: undefined,
+	})
+	.option('resultParser', {
+		alias: 'r',
+		default: undefined,
+	})
+	.option('testRegex', {
+		alias: 't',
+		default: undefined,
+	}).argv;
 
 const setupConfig = require('./setupConfig');
 const findTestFiles = require('./findTestFiles');
@@ -26,12 +39,10 @@ const enlighten = async () => {
 	const filePaths = await findTestFiles(config);
 
 	// TODO: Run tests to make sure they are passing beforehand, so we don't get false negatives
-
-	// TODO: transform files should add 'shallow' dep if needed
 	const testFileData = await transformFiles(filePaths);
 
 	if (testFileData.totalUpdatedTests < 1)
-		return `We could not update any tests!`;
+		return `We found no tests that we could update.`;
 
 	// TODO stop this having these random side effects
 	addIgnoredFilesToConfig(testFileData, config);
@@ -43,5 +54,5 @@ const enlighten = async () => {
 };
 
 enlighten()
-	.then(report => console.log('✨  finished enlightenment  ✨', report))
+	.then(report => console.log('✨  finished enlightenment ✨', report))
 	.catch(e => console.log('enlightenment failed', e));

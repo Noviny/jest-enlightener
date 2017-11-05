@@ -1,9 +1,10 @@
 const currentDir = process.cwd();
 const path = require('path');
 
-// This is currently hardcoded for atlaskit. Default should be the jest default
 const getTestRegex = (customConfig, args) =>
-	(customConfig && customConfig.testRegex) || args.testRegex || 'FAILSAFE';
+	(customConfig && customConfig.testRegex) ||
+	args.testRegex ||
+	'(/__tests__/.*|(\\.|/)(test|spec))\\.jsx?$';
 const sanitizeJestOptions = args => ({ ...args, _: undefined, $0: undefined });
 const updateCustomConfig = customConfig => {
 	if (!customConfig) {
@@ -11,9 +12,6 @@ const updateCustomConfig = customConfig => {
 			rootDir: currentDir,
 		};
 	}
-	// customConfig.reporters = [
-	//   `${__dirname}/testReporter.js`,
-	// ]
 	return customConfig;
 };
 
