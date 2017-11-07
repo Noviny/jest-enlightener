@@ -13,7 +13,7 @@ Pass in your jest options to the Enlightener using '--c' or '-config', accepting
 ### Global Install
 
 ```
-npm intall --global jest-enlightener
+npm install --global jest-enlightener
 ```
 
 or

@@ -33,6 +33,7 @@ const transformFile = filePath => {
 									innerPath.node.callee.name = 'shallow';
 									checkingTests.changedTests[testName] = {
 										file: filePath,
+										line: path.get('callee').get('loc').node.start.line,
 									};
 									innerPath.skip();
 								}

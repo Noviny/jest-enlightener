@@ -1,9 +1,11 @@
+// @flow
+
 const traverse = require('babel-traverse').default;
 const recast = require('recast');
 const t = require('babel-types');
 const fs = require('fs');
 
-const revertFile = (filePath, toRevert) =>
+const revertFile = (filePath, toRevert, testFileData) =>
 	new Promise((resolve, reject) => {
 		const testFile = fs.readFileSync(filePath, 'utf8');
 
@@ -28,7 +30,12 @@ const revertFile = (filePath, toRevert) =>
 						path.traverse({
 							CallExpression(innerPath) {
 								if (innerPath.get('callee').isIdentifier({ name: 'shallow' })) {
-									if (toRevert[testName]) {
+									const callLocation = path.get('callee').get('loc').node.start
+										.line;
+									if (
+										toRevert[testName] &&
+										testFileData[testName].line === callLocation
+									) {
 										innerPath.node.callee.name = 'mount';
 										checkingTests[testName] = {
 											changed: true,

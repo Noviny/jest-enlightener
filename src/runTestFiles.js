@@ -1,3 +1,5 @@
+// @flow
+
 const jestCli = require('jest-cli');
 
 const runTests = config => {

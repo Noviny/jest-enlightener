@@ -1,3 +1,5 @@
+// @flow
+
 const currentDir = process.cwd();
 const path = require('path');
 

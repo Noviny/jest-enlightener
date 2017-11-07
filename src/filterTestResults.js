@@ -1,3 +1,5 @@
+// @flow
+
 const filterTestResults = (testFileData, results) => {
 	if (results.numFailedTests < 1) return {};
 

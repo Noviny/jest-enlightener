@@ -1,3 +1,5 @@
+// @flow
+
 const jestish = require('jest-cli');
 const HasteMap = require('jest-haste-map');
 

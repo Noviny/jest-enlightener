@@ -1,4 +1,6 @@
 #! /usr/bin/env node
+// @flow
+
 const argv = require('yargs')
 	.option('config', {
 		alias: 'c',
@@ -48,7 +50,7 @@ const enlighten = async () => {
 	addIgnoredFilesToConfig(testFileData, config);
 	const { results } = await runTestFiles(config);
 	const toRevert = filterTestResults(testFileData, results);
-	await revertFiles(filePaths, toRevert, config);
+	await revertFiles(filePaths, toRevert, testFileData, config);
 
 	return generateReport(toRevert, testFileData);
 };

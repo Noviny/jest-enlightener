@@ -1,3 +1,5 @@
+// @flow
+
 const generateReport = (toRevert, { totalUpdatedTests }) => {
 	const revertedChangeCount = Object.keys(toRevert).length;
 	const changedCount = totalUpdatedTests - revertedChangeCount;

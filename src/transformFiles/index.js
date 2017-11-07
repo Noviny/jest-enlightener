@@ -1,3 +1,5 @@
+// @flow
+
 const pLimit = require('p-limit');
 
 const transformFile = require('./transformFile');

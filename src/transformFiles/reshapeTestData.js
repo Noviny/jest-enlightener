@@ -1,3 +1,5 @@
+// @flow
+
 const reshapeTestData = testFiles =>
 	testFiles.reduce(
 		(acc, testFile) => {
